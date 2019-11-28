@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Joongo Hunter</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css?ver=1">
+  <!-- endinject -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="css/style.css?ver=1">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="images/favicon.png" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+  <style>
+.col-md-4 {
+    flex: 0 0 25%;
+    
+}
+
+.table th, .table td {
+    vertical-align: middle;
+    font-size: 1.125rem;
+    line-height: 1;
+}
+ </style>
+</head>
+
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" style = "height: 110px;">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="index.html"><img style="height:45px;" src="images/logo.png" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <!--
+		<div class="search-field d-none d-md-block">
+          <form class="d-flex align-items-center h-100" action="#">
+            <div class="input-group">
+              <div class="input-group-prepend bg-transparent">
+                  <i class="input-group-text border-0 mdi mdi-magnify"></i>                
+              </div>
+              <input type="text" class="form-control bg-transparent border-0" placeholder="Search projects">
+            </div>
+          </form>
+        </div>
+		-->
+        <ul class="navbar-nav navbar-nav-right">
+			<li class="nav-item">
+			<div class="btn-group" role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-outline-dark">
+                            <i class="mdi mdi-star d-block mb-1"></i>
+                            인기 중고 품목들 확인
+                          </button>
+                          <button type="button" class="btn btn-outline-dark">
+                            <i class="mdi mdi-reload d-block mb-1"></i>
+                            내 모니터링 결과
+                          </button>
+                          <button type="button" class="btn btn-outline-dark">
+                            <i class="mdi mdi-account d-block mb-1"></i>
+                            중고거래 모니터링 설정
+                          </button>
+						  <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-expanded="false">사이트 이용</button>
+							<div class="dropdown-menu" x-placement="bottom-end" style="position: absolute; transform: translate3d(0px, 44px, 0px); top: 20px; left: 630px; will-change: transform;">
+                              <a class="dropdown-item">FAQ</a>
+                              <a class="dropdown-item">사이트 이용 가이드</a>
+                              <a class="dropdown-item">고객 센터</a>
+                            </div>
+						</div>
+                          
+         </li>
+		  
+          <li class="nav-item nav-profile dropdown">
+            <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+              <div class="nav-profile-img">
+                <img src="images/faces/face1.jpg" alt="image">
+                <span class="availability-status online"></span>             
+              </div>
+              <div class="nav-profile-text">
+                <p class="mb-1 text-black">이정환 님</p>
+              </div>
+            </a>
+            <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+              
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">
+                <i class="mdi mdi-logout mr-2 text-primary"></i>
+                로그아웃
+              </a>
+            </div>
+          </li>
+          
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+              <i class="mdi mdi-bell-outline"></i>
+              <span class="count-symbol bg-danger"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+              <h6 class="p-3 mb-0">알림</h6>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-success">
+                    <i class="mdi mdi-calendar"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                  <h6 class="preview-subject font-weight-normal mb-1">작업 완료 알림</h6>
+                  <p class="text-gray ellipsis mb-0">
+                    '갤노트' 키워드의 작업을 완료하였습니다
+                  </p>
+                </div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-success">
+                    <i class="mdi mdi-calendar"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                  <h6 class="preview-subject font-weight-normal mb-1">작업 완료 알림</h6>
+                  <p class="text-gray ellipsis mb-0">
+                    '아이패드' 키워드의 작업을 완료하였습니다
+                  </p>
+                </div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-success">
+                    <i class="mdi mdi-calendar"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                  <h6 class="preview-subject font-weight-normal mb-1">작업 완료 알림</h6>
+                  <p class="text-gray ellipsis mb-0">
+                    '삼성 노트북' 키워드의 작업을 완료하였습니다
+                  </p>
+                </div>
+              </a>
+              <div class="dropdown-divider"></div>
+              <h6 class="p-3 mb-0 text-center">See all notifications</h6>
+            </div>
+          </li>
+          
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper0" >
+      
+      <div class="main-panel" style = "width:100%;">
+        <div class="content-wrapper"style = "background:#fbefef">
+          <div class="col-12 grid-margin">
+              <div class="card" style = "margin-top:100px">
+                <div class="card-body">
+          
+		 
+			 <h4>
+			 <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                <i class="mdi mdi-crown"></i>                 
+              </span>
+              인기 중고 물품들
+			  </h4>
+			  
+          <div class="row">
+            <div class="col-md-4 stretch-card grid-margin">
+              <div class="card bg-gradient-light card-img-holder text-black">
+                <div class="card-body">
+                  <img src="images/ipad.jfif" style = "opacity: 0.2;" class="card-img-absolute" alt="circle-image">
+                  <h4 class="font-weight-normal mb-3">IPad 10.2 7세대 WiFi 128GB
+                  </h4>
+                  <h2 class="">425,000원~</h2>
+                  <h6 class="card-text">총 58개의 중고 물품</h6>
+                </div>
+              </div>
+            </div>
+			<div class="col-md-4 stretch-card grid-margin">
+              <div class="card bg-gradient-light card-img-holder text-black">
+                <div class="card-body">
+                  <img src="images/macbook.jpg" style = "opacity: 0.2;" class="card-img-absolute" alt="circle-image">
+                  <h4 class="font-weight-normal mb-3">MacBook Pro 16' 2019년형
+                  </h4>
+                  <h2 class="">2,225,000원~</h2>
+                  <h6 class="card-text">총 12개의 중고 물품</h6>
+                </div>
+              </div>
+            </div>
+			<div class="col-md-4 stretch-card grid-margin">
+              <div class="card bg-gradient-light card-img-holder text-black">
+                <div class="card-body">
+                  <img src="images/iphone.webp" style = "opacity: 0.2;" class="card-img-absolute" alt="circle-image">
+                  <h4 class="font-weight-normal mb-3">IPhone XR 64GB
+                  </h4>
+                  <h2 class="">333,000원~</h2>
+                  <h6 class="card-text">총 20개의 중고 물품</h6>
+                </div>
+              </div>
+            </div>
+			<div class="col-md-4 stretch-card grid-margin">
+              <div class="card bg-gradient-light card-img-holder text-black">
+                <div class="card-body">
+                  <img src="images/ipad.jfif" style = "opacity: 0.2;" class="card-img-absolute" alt="circle-image">
+                  <h4 class="font-weight-normal mb-3">IPad 10.2 7세대 WiFi 128GB
+                  </h4>
+                  <h2 class="">425,000원~</h2>
+                  <h6 class="card-text">Increased by 60%</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+		  <div class="row">
+            <div class="col-md-4 stretch-card grid-margin">
+              <div class="card bg-gradient-light card-img-holder text-black">
+                <div class="card-body">
+                  <img src="images/ipad.jfif" style = "opacity: 0.2;" class="card-img-absolute" alt="circle-image">
+                  <h4 class="font-weight-normal mb-3">IPad 10.2 7세대 WiFi 128GB
+                  </h4>
+                  <h2 class="">425,000원~</h2>
+                  <h6 class="card-text">총 58개의 중고 물품</h6>
+                </div>
+              </div>
+            </div>
+			<div class="col-md-4 stretch-card grid-margin">
+              <div class="card bg-gradient-light card-img-holder text-black">
+                <div class="card-body">
+                  <img src="images/macbook.jpg" style = "opacity: 0.2;" class="card-img-absolute" alt="circle-image">
+                  <h4 class="font-weight-normal mb-3">MacBook Pro 16' 2019년형
+                  </h4>
+                  <h2 class="">2,225,000원~</h2>
+                  <h6 class="card-text">총 12개의 중고 물품</h6>
+                </div>
+              </div>
+            </div>
+			<div class="col-md-4 stretch-card grid-margin">
+              <div class="card bg-gradient-light card-img-holder text-black">
+                <div class="card-body">
+                  <img src="images/iphone.webp" style = "opacity: 0.2;" class="card-img-absolute" alt="circle-image">
+                  <h4 class="font-weight-normal mb-3">IPhone XR 64GB
+                  </h4>
+                  <h2 class="">333,000원~</h2>
+                  <h6 class="card-text">총 20개의 중고 물품</h6>
+                </div>
+              </div>
+            </div>
+			<div class="col-md-4 stretch-card grid-margin">
+              <div class="card bg-gradient-light card-img-holder text-black">
+                <div class="card-body">
+                  <img src="images/ipad.jfif" style = "opacity: 0.2;" class="card-img-absolute" alt="circle-image">
+                  <h4 class="font-weight-normal mb-3">IPad 10.2 7세대 WiFi 128GB
+                  </h4>
+                  <h2 class="">425,000원~</h2>
+                  <h6 class="card-text">Increased by 60%</h6>
+                </div>
+              </div>
+            </div>
+			<button type="button" class="btn btn-info btn-lg btn-block" style = "margin-left:80%; width : 300px">더 보러가기!</button>
+			
+          </div>
+		  </div>
+		  </div>
+		  </div>
+		  
+          <div class="row">
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">내 모니터링 정보</h4>
+                  <div class="table-responsive table-hover table-bordered">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>
+                            검색어
+                          </th>
+                          <th>
+                            사이트
+                          </th>
+                          <th>
+                            상태
+                          </th>
+                          <th>
+                            최신 업데이트
+                          </th>
+                          <th>
+                            확인하러 가기
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            아이패드 64GB
+                          </td>
+                          <td>
+                            중고나라(https://cafe.naver.com/joonggonara)
+                          </td>
+                          <td>
+                            <label class="badge badge-gradient-success">85개 글 수집 완료</label>
+                          </td>
+                          <td>
+                            2019-11-29
+                          </td>
+                          <td>
+                            <button type="button" class="btn btn-gradient-light btn-fw">이동</button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            아이패드
+                          </td>
+                          <td>
+                            중고나라(https://cafe.naver.com/joonggonara)
+                          </td>
+                          <td>
+                            <label class="badge badge-gradient-success">164개 글 수집 완료</label>
+                          </td>
+                          <td>
+                            2019-11-29
+                          </td>
+                          <td>
+                            <button type="button" class="btn btn-gradient-light btn-fw">이동</button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            삼성 노트북
+                          </td>
+                          <td>
+                            중고나라(https://cafe.naver.com/joonggonara)
+                          </td>
+                          <td>
+                            <label class="badge badge-gradient-success">815개 글 수집 완료</label>
+                          </td>
+                          <td>
+                            2019-11-29
+                          </td>
+                          <td>
+                            <button type="button" class="btn btn-gradient-light btn-fw">이동</button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            레노버 아이디어패드
+                          </td>
+                          <td>
+                            중고나라(https://cafe.naver.com/joonggonara)
+                          </td>
+                          <td>
+                            <label class="badge badge-gradient-danger">글 수집 진행중</label>
+                          </td>
+                          <td>
+                            2019-11-29
+                          </td>
+                          <td>
+                          </td>
+                        </tr>
+						<tr>
+                          <td>
+                            갤노트
+                          </td>
+                          <td>
+                            중고나라(https://cafe.naver.com/joonggonara)
+                          </td>
+                          <td>
+                            <label class="badge badge-gradient-success">85개 글 수집 완료</label>
+                          </td>
+                          <td>
+                            2019-11-29
+                          </td>
+                          <td>
+                            <button type="button" class="btn btn-gradient-light btn-fw">이동</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                
+				<button type="button" class="btn btn-info btn-lg btn-block" style = "margin-top:20px ;margin-left:85%; width : 200px">목록 확인</button>
+				</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                  <h2 class="card-title">IPad 10.2 7세대 WiFi 128GB 가격 변동</h2>
+                  <canvas id="areaChart" style="height: 500px; display: block; width: 1000px; margin-bottom:30px" width="343" height="171" class="chartjs-render-monitor">
+				  
+				  
+				  </canvas>
+				  <h1> IPad 10.2 7세대 WiFi 128GB 의 다음 달 예상 가격은 415,000원 입니다.</h1>
+				  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2019 <a href="https://www.bootstrapdash.com/" target="_blank">Team Yanghwa</a>. All rights reserved.</span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+
+  <!-- plugins:js -->
+  <script src="vendors/js/vendor.bundle.base.js"></script>
+  <script src="vendors/js/vendor.bundle.addons.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src="js/off-canvas.js"></script>
+  <script src="js/misc.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="js/chart.js"></script>
+  <script src="js/dashboard.js"></script>
+  <!-- End custom js for this page-->
+</body>
+
+</html>
